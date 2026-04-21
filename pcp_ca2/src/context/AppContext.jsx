@@ -7,11 +7,11 @@ export const AppContext = createContext(null);
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // Fetch API ONCE on app load
+  // Fetch API 
   useEffect(() => {
     fetchActivitiesData()
       .then((activities) => {
-        // Normalize data to handle inconsistencies
+        // Normalize data 
         const normalized = activities.map((activity, index) => ({
           activityId: activity.activityId ?? activity.id ?? `activity-${index}`,
           name: activity.name ?? activity.title ?? "Unnamed Activity",

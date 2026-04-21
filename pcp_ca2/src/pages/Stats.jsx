@@ -14,7 +14,6 @@ const Stats = () => {
       typeof activity.goalAchieved === "boolean"
   );
 
-  // All computed using reduce — no derived values stored in state
   const totalActivities = validActivities.length;
 
   const goalAchievedCount = validActivities.reduce(
@@ -27,43 +26,14 @@ const Stats = () => {
     0
   );
 
-  // const totalSteps = validActivities.reduce(
-  //   (sum, activity) => sum + activity.steps,
-  //   0
-  // );
-
-  // const totalCalories = validActivities.reduce(
-  //   (sum, activity) => sum + activity.caloriesBurned,
-  //   0
-  // );
-
-  // const totalMinutes = validActivities.reduce(
-  //   (sum, activity) => sum + activity.workoutMinutes,
-  //   0
-  // );
-
-  // const averageSteps =
-  //   totalActivities > 0
-  //     ? (totalSteps / totalActivities).toFixed(2)
-  //     : 0;
-
-  // const averageCalories =
-  //   totalActivities > 0
-  //     ? (totalCalories / totalActivities).toFixed(2)
-  //     : 0;
-
-  // Expose window.appState ONLY in /stats
+  
   useEffect(() => {
     if (!loading && !error) {
       window.appState = {
         totalActivities,
         goalAchieved: goalAchievedCount,
         goalNotAchieved: goalNotAchievedCount,
-        // totalSteps,
-        // totalCalories,
-        // totalMinutes,
-        // averageSteps: parseFloat(averageSteps),
-        // averageCalories: parseFloat(averageCalories),
+        
       };
     }
 
@@ -88,21 +58,7 @@ const Stats = () => {
       <p data-testid="goal-not-achieved">
         Goal Not Achieved: {goalNotAchievedCount}
       </p>
-      {/* <p data-testid="total-steps">
-        Total Steps: {totalSteps}
-      </p>
-      <p data-testid="total-calories">
-        Total Calories Burned: {totalCalories}
-      </p>
-      <p data-testid="total-minutes">
-        Total Workout Minutes: {totalMinutes}
-      </p>
-      <p data-testid="average-steps">
-        Average Steps: {averageSteps}
-      </p>
-      <p data-testid="average-calories">
-        Average Calories: {averageCalories}
-      </p> */}
+    
     </div>
   );
 };
