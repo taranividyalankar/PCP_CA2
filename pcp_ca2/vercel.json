@@ -1,0 +1,4 @@
+npm create vite@latest PCP_CA2 -- --template react
+cd PCP_CA2
+npm install
+npm install axios react-router-dom
